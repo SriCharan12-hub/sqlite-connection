@@ -34,6 +34,8 @@ app.post("/login",(req,res)=>{
         const payload={username:username}
         const token=jwt.sign(payload,"Hello")
         res.send(token)
+    } else {
+        res.status(401).send("Invalid credentials")
     }
 })
 

@@ -52,13 +52,16 @@ app.post("/create",async(req,res)=>{
 
 app.post("/add",async(req,res)=>{
     try{
-    const {id,name}=req.body 
+    const {name}=req.body 
     const hashedname = await bcrypt.hash(name,10)
-    // const query=`INSERT INTO FRIENDS (ID,NAME) VALUES(${id},'${hashedname}')`
-    // // db.run(query)
+    
+    // Get max ID and auto-increment
+    const result = await db.get("SELECT MAX(ID) as maxId FROM FRIENDS")
+    const newId = (result.maxId || 0) + 1
+    
     const query = `INSERT INTO FRIENDS (ID,NAME) VALUES(?,?)`
-    await db.run(query, [id, hashedname])
-    res.send("added values")
+    await db.run(query, [newId, hashedname])
+    res.send("added values with ID: " + newId)
     }
     catch(error){
         res.send("unable to add values",error)

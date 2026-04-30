@@ -1,0 +1,44 @@
+### Base URL
+@baseUrl = http://localhost:3000
+
+### Test server status
+ http://localhost:3000/
+
+### Login endpoint
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "id":8,
+  "username": "charan",
+  
+}
+
+### Create table
+POST @baseUrl/create
+Content-Type: application/json
+
+{}
+
+### Add user
+POST @baseUrl/add
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Charan"
+}
+
+### Get all details
+GET @baseUrl/details
+
+### Update user
+PUT @baseUrl/update/1
+Content-Type: application/json
+
+{
+  "name": "Updated Name"
+}
+
+### Delete user
+DELETE @baseUrl/delete/1

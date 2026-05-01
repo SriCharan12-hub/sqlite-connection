@@ -1,6 +1,7 @@
 ### Base URL
 @baseUrl = http://localhost:3000
 
+
 ### Test server status
  http://localhost:3000/
 
@@ -42,3 +43,5 @@ Content-Type: application/json
 
 ### Delete user
 DELETE @baseUrl/delete/1
+
+# middle ware
